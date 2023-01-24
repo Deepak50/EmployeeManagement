@@ -12,5 +12,6 @@ public class EmployeeManagementApplication {
 		SpringApplication.run(EmployeeManagementApplication.class, args);
 		// This is just to test the git push
 		// This is to test the second push
+		// This is to push in newBranch
 	}
 }
