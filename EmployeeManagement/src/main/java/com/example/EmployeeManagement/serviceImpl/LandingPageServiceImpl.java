@@ -15,7 +15,7 @@ public class LandingPageServiceImpl implements LandingPageService {
 
 	@Autowired
 	LandingPageRepository landingPageRepository;
-	
+
 	@Override
 	public void test() {
 		landingPageRepository.test();
@@ -34,6 +34,11 @@ public class LandingPageServiceImpl implements LandingPageService {
 	@Override
 	public List<Employee> retrieveAll() {
 		return landingPageRepository.retrieveAll();
+	}
+
+	@Override
+	public void updateEmployee(EmployeeDto employeeDto) {
+		landingPageRepository.updateEmployee(employeeDto);
 	}
 
 }

@@ -38,7 +38,7 @@ public class LandingPageRepositoryImpl implements LandingPageRepository {
 	@Override
 	public String add(EmployeeDto employeeDto) {
 		Employee employee = giveEmployeeDo(employeeDto);
-		entityManager.persist(employee);
+		entityManager.merge(employee);
 		return "Successfully Inserted";
 	}
 
@@ -58,5 +58,17 @@ public class LandingPageRepositoryImpl implements LandingPageRepository {
 		Query q = entityManager.createNamedQuery("allEmployees",Employee.class);
 		List<Employee> employees = q.getResultList();
 		return employees;
+	}
+
+	@Override
+	public void updateEmployee(EmployeeDto employeeDto) {	
+		Query add = entityManager.createQuery("update Employee set firstName =: firstName, lastName =: lastName, details =: details where id =: id");
+		add.setParameter("firstName", employeeDto.getFirstName());
+		add.setParameter("lastName", employeeDto.getLastName());
+		add.setParameter("details", employeeDto.getDetails());
+		add.setParameter("id", employeeDto.getId());
+		add.executeUpdate();
+		//entityManager.merge(giveEmployeeDo(employeeDto));
+		System.out.println("Successfully Updated");
 	}
 }
